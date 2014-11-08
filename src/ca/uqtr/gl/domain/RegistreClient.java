@@ -1,25 +1,25 @@
 package ca.uqtr.gl.domain;
 
+import java.util.ArrayList;
 import java.util.Date;
-import java.util.HashMap;
 
 import ca.uqtr.gl.entities.Adresse;
 import ca.uqtr.gl.entities.Client;
+import ca.uqtr.gl.util.Utils;
 
 public class RegistreClient {
-	private static RegistreClient _instance;
-	private static HashMap<Integer, Client> listeClients;
+	private static ArrayList<Client> listeClients;
 	
 	// identifiant unique pour nouveau client
 	public static int compteurIdentifiant = 0;
 		
 	public RegistreClient() {
 		if (listeClients == null) {
-			listeClients = new HashMap<Integer, Client>();
+			listeClients = new ArrayList<Client>();
 		}
 	}
 
-	public HashMap<Integer, Client> getListeClients() {
+	public ArrayList<Client> getListeClients() {
 		return listeClients;
 	}
 	
@@ -27,9 +27,17 @@ public class RegistreClient {
 		return listeClients.get(identifiant);
 	}
 
-	public void ajouterClient(String noCarteMembre, String nom, String prenom, 
-			Date dateNaissance, Adresse adresse, String noTel) {
-		listeClients.put(++compteurIdentifiant, new Client(compteurIdentifiant, noCarteMembre, nom, prenom, dateNaissance, adresse, noTel));
+	public void ajouterClient(String nom, String prenom, 
+			Date dateNaissance, Adresse adresse, String noTel, String courriel) {
+		String noCarteMembre = "";
+		Client c = null;
+		
+		do {
+			noCarteMembre = Utils.obtenirChaineAleatoire(6);
+			c = obtenirClient(noCarteMembre);
+		} while (c != null);
+		
+		listeClients.add(new Client(++compteurIdentifiant, noCarteMembre, nom, prenom, dateNaissance, adresse, noTel, courriel));
 	}
 
 	public void supprimerClient(Client client) {
@@ -37,11 +45,33 @@ public class RegistreClient {
 	}
 
 	public void modifierClient(Client c, String nom, String prenom, 
-			Date dateNaissance, Adresse adresse, String noTel) {
+			Date dateNaissance, Adresse adresse, String noTel, String courriel) {
 		
 		c.setNom(nom);
 		c.setPrenom(prenom);
+		c.setDateNaissance(dateNaissance);
 		c.setAdresse(adresse);
 		c.setNoTelephone(noTel);
+		c.setCourriel(courriel);
+	}
+	
+	public Client obtenirClient(int identifiant) {
+		for(Client c : listeClients) {
+			if (c.getIdentifiant() == identifiant) {
+				return c;
+			}	
+		}
+			
+		return null;
+	}
+	
+	public Client obtenirClient(String noCarteMembre) {
+		for(Client c : listeClients) {
+			if (c.getNoCarteMembre().equalsIgnoreCase(noCarteMembre)) {
+				return c;
+			}	
+		}
+			
+		return null;
 	}
 }

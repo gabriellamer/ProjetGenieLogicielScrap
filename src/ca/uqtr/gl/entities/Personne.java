@@ -34,7 +34,6 @@ public class Personne {
 	public void setDateNaissance(Date dateNaissance) {
 		this.dateNaissance = dateNaissance;
 	}
-	
 	public Adresse getAdresse() {
 		return adresse;
 	}

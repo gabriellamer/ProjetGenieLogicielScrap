@@ -8,17 +8,19 @@ public class Client extends Personne {
 	private int identifiant;
 	private String noCarteMembre;
 	private String noTelephone;
+	private String courriel;
 	
 	public Client(String nom, String prenom, Date dateNaissance, Adresse adresse) {
-		this(RegistreClient.compteurIdentifiant, "", nom, prenom, dateNaissance, adresse, "");
+		this(RegistreClient.compteurIdentifiant, "", nom, prenom, dateNaissance, adresse, "", "");
 	}
 	
-	public Client(int identifiant, String noCarteMembre, String nom, String prenom, Date dateNaissance, Adresse adresse, String noTel) {
+	public Client(int identifiant, String noCarteMembre, String nom, String prenom, Date dateNaissance, Adresse adresse, String noTel, String courriel) {
 		super(nom, prenom, dateNaissance, adresse);
 		
 		this.identifiant = identifiant;
 		this.noCarteMembre = noCarteMembre;
 		this.noTelephone = noTel;
+		this.courriel = courriel;
 	}
 	
 	public int getIdentifiant() {
@@ -43,6 +45,14 @@ public class Client extends Personne {
 
 	public void setNoTelephone(String noTelephone) {
 		this.noTelephone = noTelephone;
+	}
+
+	public String getCourriel() {
+		return courriel;
+	}
+
+	public void setCourriel(String courriel) {
+		this.courriel = courriel;
 	}
 
 	public String obtenirNomComplet() {
