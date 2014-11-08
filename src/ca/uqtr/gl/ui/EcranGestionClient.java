@@ -23,7 +23,7 @@ public class EcranGestionClient {
 	private Client client;
 	private boolean isDirty = false;
 	
-	public JFrame frmAjoutmajsuppressionClient;
+	public JFrame frmGestionClient;
 	private JTagTextField txtNom;
 	private JTagTextField txtPrenom;
 	private JTagTextField txtNoCivique;
@@ -53,15 +53,15 @@ public class EcranGestionClient {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		frmAjoutmajsuppressionClient = new JFrame();
-		frmAjoutmajsuppressionClient.setTitle("Gestion clients");
-		frmAjoutmajsuppressionClient.setBounds(100, 100, 607, 395);
-		frmAjoutmajsuppressionClient.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frmAjoutmajsuppressionClient.getContentPane().setLayout(null);
+		frmGestionClient = new JFrame();
+		frmGestionClient.setTitle("Gestion clients");
+		frmGestionClient.setBounds(100, 100, 607, 395);
+		frmGestionClient.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frmGestionClient.getContentPane().setLayout(null);
 		
 		JLabel lblNewLabel = new JLabel("Nom:");
 		lblNewLabel.setBounds(10, 11, 46, 14);
-		frmAjoutmajsuppressionClient.getContentPane().add(lblNewLabel);
+		frmGestionClient.getContentPane().add(lblNewLabel);
 		
 		txtNom = new JTagTextField();
 		txtNom.addFocusListener(new FocusAdapter() {
@@ -78,12 +78,12 @@ public class EcranGestionClient {
 		});
 		txtNom.setToolTipText("");
 		txtNom.setBounds(109, 8, 472, 20);
-		frmAjoutmajsuppressionClient.getContentPane().add(txtNom);
+		frmGestionClient.getContentPane().add(txtNom);
 		txtNom.setColumns(10);
 		
 		JLabel lblPrnom = new JLabel("Pr\u00E9nom:");
 		lblPrnom.setBounds(10, 42, 69, 14);
-		frmAjoutmajsuppressionClient.getContentPane().add(lblPrnom);
+		frmGestionClient.getContentPane().add(lblPrnom);
 		
 		txtPrenom = new JTagTextField();
 		txtPrenom.addKeyListener(new KeyAdapter() {
@@ -100,11 +100,11 @@ public class EcranGestionClient {
 		});
 		txtPrenom.setColumns(10);
 		txtPrenom.setBounds(109, 39, 472, 20);
-		frmAjoutmajsuppressionClient.getContentPane().add(txtPrenom);
+		frmGestionClient.getContentPane().add(txtPrenom);
 		
 		JLabel lblAdresse = new JLabel("No. civique:");
 		lblAdresse.setBounds(10, 117, 69, 14);
-		frmAjoutmajsuppressionClient.getContentPane().add(lblAdresse);
+		frmGestionClient.getContentPane().add(lblAdresse);
 		
 		txtNoCivique = new JTagTextField();
 		txtNoCivique.addKeyListener(new KeyAdapter() {
@@ -121,11 +121,11 @@ public class EcranGestionClient {
 		});
 		txtNoCivique.setColumns(10);
 		txtNoCivique.setBounds(109, 114, 472, 20);
-		frmAjoutmajsuppressionClient.getContentPane().add(txtNoCivique);
+		frmGestionClient.getContentPane().add(txtNoCivique);
 		
 		JLabel lblVille = new JLabel("Ville:");
 		lblVille.setBounds(10, 173, 46, 14);
-		frmAjoutmajsuppressionClient.getContentPane().add(lblVille);
+		frmGestionClient.getContentPane().add(lblVille);
 		
 		txtVille = new JTagTextField();
 		txtVille.addKeyListener(new KeyAdapter() {
@@ -142,11 +142,11 @@ public class EcranGestionClient {
 		});
 		txtVille.setColumns(10);
 		txtVille.setBounds(109, 170, 472, 20);
-		frmAjoutmajsuppressionClient.getContentPane().add(txtVille);
+		frmGestionClient.getContentPane().add(txtVille);
 		
 		JLabel lblCodePostal = new JLabel("Code postal:");
 		lblCodePostal.setBounds(10, 201, 80, 14);
-		frmAjoutmajsuppressionClient.getContentPane().add(lblCodePostal);
+		frmGestionClient.getContentPane().add(lblCodePostal);
 		
 		txtCodePostal = new JTagTextField();
 		txtCodePostal.addKeyListener(new KeyAdapter() {
@@ -163,11 +163,11 @@ public class EcranGestionClient {
 		});
 		txtCodePostal.setColumns(10);
 		txtCodePostal.setBounds(109, 198, 472, 20);
-		frmAjoutmajsuppressionClient.getContentPane().add(txtCodePostal);
+		frmGestionClient.getContentPane().add(txtCodePostal);
 		
 		lblTlphone = new JLabel("T\u00E9l. maison:");
 		lblTlphone.setBounds(10, 229, 69, 14);
-		frmAjoutmajsuppressionClient.getContentPane().add(lblTlphone);
+		frmGestionClient.getContentPane().add(lblTlphone);
 		
 		txtTelephone = new JTagTextField();
 		txtTelephone.addKeyListener(new KeyAdapter() {
@@ -184,11 +184,11 @@ public class EcranGestionClient {
 		});
 		txtTelephone.setColumns(10);
 		txtTelephone.setBounds(109, 226, 472, 20);
-		frmAjoutmajsuppressionClient.getContentPane().add(txtTelephone);
+		frmGestionClient.getContentPane().add(txtTelephone);
 		
 		lblCourriel = new JLabel("Courriel:");
 		lblCourriel.setBounds(10, 257, 69, 14);
-		frmAjoutmajsuppressionClient.getContentPane().add(lblCourriel);
+		frmGestionClient.getContentPane().add(lblCourriel);
 		
 		txtCourriel = new JTagTextField();
 		txtCourriel.addFocusListener(new FocusAdapter() {
@@ -210,7 +210,7 @@ public class EcranGestionClient {
 		txtCourriel.setForeground(new Color(0, 0, 0));
 		txtCourriel.setColumns(10);
 		txtCourriel.setBounds(109, 254, 472, 20);
-		frmAjoutmajsuppressionClient.getContentPane().add(txtCourriel);
+		frmGestionClient.getContentPane().add(txtCourriel);
 		
 		JButton btnEnregistrer = new JButton("Enregistrer");
 		btnEnregistrer.addMouseListener(new MouseAdapter() {
@@ -242,7 +242,7 @@ public class EcranGestionClient {
 			}
 		});
 		btnEnregistrer.setBounds(216, 323, 115, 23);
-		frmAjoutmajsuppressionClient.getContentPane().add(btnEnregistrer);
+		frmGestionClient.getContentPane().add(btnEnregistrer);
 		
 		JButton btnSupprimer = new JButton("Supprimer");
 		btnSupprimer.addMouseListener(new MouseAdapter() {
@@ -256,15 +256,15 @@ public class EcranGestionClient {
 			}
 		});
 		btnSupprimer.setBounds(341, 323, 115, 23);
-		frmAjoutmajsuppressionClient.getContentPane().add(btnSupprimer);
+		frmGestionClient.getContentPane().add(btnSupprimer);
 		
 		JButton btnAnnuler = new JButton("Annuler");
 		btnAnnuler.setBounds(466, 323, 115, 23);
-		frmAjoutmajsuppressionClient.getContentPane().add(btnAnnuler);
+		frmGestionClient.getContentPane().add(btnAnnuler);
 		
 		JLabel lblRue = new JLabel("Odonyme:");
 		lblRue.setBounds(10, 145, 69, 14);
-		frmAjoutmajsuppressionClient.getContentPane().add(lblRue);
+		frmGestionClient.getContentPane().add(lblRue);
 		
 		txtOdonyme = new JTagTextField();
 		txtOdonyme.addKeyListener(new KeyAdapter() {
@@ -281,7 +281,7 @@ public class EcranGestionClient {
 		});
 		txtOdonyme.setColumns(10);
 		txtOdonyme.setBounds(109, 142, 472, 20);
-		frmAjoutmajsuppressionClient.getContentPane().add(txtOdonyme);
+		frmGestionClient.getContentPane().add(txtOdonyme);
 		
 		txtDateNaissance = new JTagTextField();
 		txtDateNaissance.addKeyListener(new KeyAdapter() {
@@ -297,16 +297,16 @@ public class EcranGestionClient {
 			}
 		});
 		txtDateNaissance.setBounds(109, 70, 472, 20);
-		frmAjoutmajsuppressionClient.getContentPane().add(txtDateNaissance);
+		frmGestionClient.getContentPane().add(txtDateNaissance);
 		txtDateNaissance.setColumns(10);
 		
 		JLabel lblDateNais = new JLabel("Date naissance:");
 		lblDateNais.setBounds(10, 73, 113, 14);
-		frmAjoutmajsuppressionClient.getContentPane().add(lblDateNais);
+		frmGestionClient.getContentPane().add(lblDateNais);
 		
 		JLabel lblAaaammjj = new JLabel("(JJ/MM/AAAA)");
 		lblAaaammjj.setBounds(10, 92, 113, 14);
-		frmAjoutmajsuppressionClient.getContentPane().add(lblAaaammjj);
+		frmGestionClient.getContentPane().add(lblAaaammjj);
 	}
 	
 	private boolean validerChampsRequis() {

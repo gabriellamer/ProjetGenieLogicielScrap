@@ -11,7 +11,7 @@ public class Main {
 			public void run() {
 				try {
 					EcranGestionClient window = new EcranGestionClient(ctlClients);
-					window.frmAjoutmajsuppressionClient.setVisible(true);					
+					window.frmGestionClient.setVisible(true);					
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
