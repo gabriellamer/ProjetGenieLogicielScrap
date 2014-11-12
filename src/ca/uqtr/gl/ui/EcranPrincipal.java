@@ -34,8 +34,8 @@ public class EcranPrincipal {
 	 * Create the frame.
 	 */
 	public EcranPrincipal() {
-		
-		frame = new JFrame();
+
+/*		
 		ctlClients.ajouter("Tremblay", "Carl", null, null, "(450) 222-3333", "carl@gmail.com");
 		ctlClients.ajouter("Roy", "Bob", null, null, "(450) 444-5555", "roy@gmail.com");
 		
@@ -50,9 +50,11 @@ public class EcranPrincipal {
 			e.printStackTrace();
 		}
 		
+		
 		System.out.println(ctlClients.obtenirClient(1).getNoCarteMembre());
 		System.out.println(ctlClients.obtenirClient(2).getNoCarteMembre());
-		
+*/		
+		frame = new JFrame();
 		frame.setModalExclusionType(ModalExclusionType.APPLICATION_EXCLUDE);
 		
 		frame.setTitle("Menu principal");
