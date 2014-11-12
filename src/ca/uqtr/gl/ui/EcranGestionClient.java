@@ -1,4 +1,5 @@
 package ca.uqtr.gl.ui;
+
 import java.awt.Color;
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
@@ -57,7 +58,7 @@ public class EcranGestionClient {
 		frmGestionClient = new JFrame();
 		frmGestionClient.setTitle("Gestion clients");
 		frmGestionClient.setBounds(100, 100, 607, 395);
-		frmGestionClient.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frmGestionClient.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		frmGestionClient.getContentPane().setLayout(null);
 		
 		JLabel lblNewLabel = new JLabel("Nom:");

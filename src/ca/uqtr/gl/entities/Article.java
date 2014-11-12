@@ -7,7 +7,7 @@ public class Article {
 	private double largeur;
 	private double hauteur;
 	private double prix;
-	private double qte;
+	private double qteInventaire;
 	
 	
 	/*
@@ -23,7 +23,7 @@ public class Article {
 		this.largeur = largeur;
 		this.hauteur = hauteur;
 		this.prix = prix;
-		this.qte = qte;
+		this.qteInventaire = qte;
 	}
 	
 	public String getCode() {
@@ -74,12 +74,12 @@ public class Article {
 		this.prix = prix;
 	}
 	
-	public double getQte() {
-		return qte;
+	public double getQteInventaire() {
+		return qteInventaire;
 	}
 
-	public void setQte(double qte) {
-		this.qte = qte;
+	public void setQteInventaire(double qte) {
+		this.qteInventaire = qte;
 	}
 
 }

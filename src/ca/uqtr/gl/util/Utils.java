@@ -1,5 +1,7 @@
 package ca.uqtr.gl.util;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.UUID;
@@ -41,4 +43,5 @@ public class Utils {
 		
 		return null;
 	}
+	
 }

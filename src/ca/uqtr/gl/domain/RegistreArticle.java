@@ -49,7 +49,7 @@ public class RegistreArticle {
 	
 	public Article obtenirArticle(String code) {
 		for(Article a : listeArticles) {
-			if (a.getCode() == code) {
+			if (a.getCode().equals(code)) {
 				return a;
 			}	
 		}
