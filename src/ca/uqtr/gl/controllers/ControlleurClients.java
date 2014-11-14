@@ -18,8 +18,8 @@ public class ControlleurClients {
 		return registreClient.obtenirClient(identifiant);
 	}
 	
-	public Client obtenirClient(String noCarteMembre) {
-		return registreClient.obtenirClient(noCarteMembre);
+	public Client obtenirClientParNoCarteMembre(int noCarteMembre) {
+		return registreClient.obtenirClientParNoCarteMembre(noCarteMembre);
 	}
 	
 	public Client obtenirDernierClient() {

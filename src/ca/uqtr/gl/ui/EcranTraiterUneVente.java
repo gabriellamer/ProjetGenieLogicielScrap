@@ -18,6 +18,7 @@ import ca.uqtr.gl.entities.Article;
 import ca.uqtr.gl.entities.Client;
 import ca.uqtr.gl.entities.Vente;
 import ca.uqtr.gl.ui.components.VenteTableDataModel;
+import ca.uqtr.gl.util.Utils;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -246,20 +247,21 @@ public class EcranTraiterUneVente {
 	
 	private void assignerClientParCode(String code)
 	{
-		client = EcranPrincipal.ctlClients.obtenirClient(code);
+		if (Utils.isNumeric(code)) {
+			client = EcranPrincipal.ctlClients.obtenirClientParNoCarteMembre(Integer.parseInt(code));
 
-
-		//Si le client est trouvé
-		if(client != null)
-		{
-			lblClientTrouve.setVisible(true);
-			lblClientNonTrouve.setVisible(false);
-		}
-		else
-		{
-			client = null;
-			lblClientTrouve.setVisible(false);
-			lblClientNonTrouve.setVisible(true);
+			//Si le client est trouvé
+			if(client != null)
+			{
+				lblClientTrouve.setVisible(true);
+				lblClientNonTrouve.setVisible(false);
+			}
+			else
+			{
+				client = null;
+				lblClientTrouve.setVisible(false);
+				lblClientNonTrouve.setVisible(true);
+			}
 		}
 	}
 
