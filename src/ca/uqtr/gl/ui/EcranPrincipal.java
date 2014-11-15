@@ -96,6 +96,16 @@ public class EcranPrincipal {
 			}
 		});
 		
+		
+		//Gestion des Articles
+		btnGererArticles.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+				EcranGestionArticle window = new EcranGestionArticle(ctlArticles);
+				window.frmGestionArticles.setVisible(true);
+			}
+		});
+		
 	}
 	
 	public JFrame getFrame()
