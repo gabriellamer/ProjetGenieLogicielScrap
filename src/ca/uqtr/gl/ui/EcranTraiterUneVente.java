@@ -43,16 +43,28 @@ public class EcranTraiterUneVente {
 	private JLabel lblClientNonTrouve;
 	private JButton btnSupprimer;
 	private JButton btnTerminerLaVente;
-	
+	private final EcranAfficherListeVentes ecranAfficherListeVentes;
 	private VenteTableDataModel dataModel;
 	private Vente vente;
+	private boolean lectureSeule = false;
 	private Client client = null;
 	
 	
-	public EcranTraiterUneVente() {
+	public EcranTraiterUneVente(EcranAfficherListeVentes ecranAfficherListeVentes, Vente venteSel) {
 		
 		frame = new JFrame();
-		vente = new Vente();
+		this.ecranAfficherListeVentes = ecranAfficherListeVentes;
+		
+		if(venteSel != null)
+		{
+			lectureSeule = true;
+			vente = venteSel;
+		}
+		else
+		{
+			vente = new Vente();
+		}
+		
 		
 		frame.setTitle("Traiter une vente");
 		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -156,10 +168,22 @@ public class EcranTraiterUneVente {
 		lblClientTrouve.setVisible(false);
 		lblClientNonTrouve.setVisible(false);
 		
+		
+		
+		
+		if(lectureSeule)
+		{
+			btnAjouter.setVisible(false);
+			btnTerminerLaVente.setVisible(false);
+			btnSupprimer.setVisible(false);
+			
+			tNoCarteClient.setText(String.valueOf(vente.getClient().getNoCarteMembre()));
+			tNoCarteClient.setEnabled(false);
+			rafraichirDonnees();
+			
+		}
+		
 		initListeners();
-		
-		
-		
 		
 	}
 	
@@ -224,9 +248,10 @@ public class EcranTraiterUneVente {
 				{	
 					//Assigne le client à la vente
 					vente.setClient(client);
-					
+
 					//Ajoute la vente au registre
 					EcranPrincipal.ctlVentes.ajouterVente(vente);
+					ecranAfficherListeVentes.rafraichirListeVentes();
 					frame.setVisible(false);
 				}
 				
