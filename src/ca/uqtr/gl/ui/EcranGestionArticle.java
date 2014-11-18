@@ -33,8 +33,8 @@ public class EcranGestionArticle {
 	private JTagTextField txtQte;
 	private JLabel lblPrix;
 	private JTagTextField txtPrix;
-	private JLabel lbl;
-	private JTagTextField txtCourriel;
+	private JLabel lblFraisDouane;
+	private JTagTextField txtFraisDouane;
 	private JTagTextField txtHauteur;
 	private JTagTextField txtLongeur;
 
@@ -80,7 +80,7 @@ public class EcranGestionArticle {
 			}
 		});
 		txtCode.setToolTipText("");
-		txtCode.setBounds(109, 8, 472, 20);
+		txtCode.setBounds(143, 8, 438, 20);
 		frmGestionArticles.getContentPane().add(txtCode);
 		txtCode.setColumns(10);
 		
@@ -102,7 +102,7 @@ public class EcranGestionArticle {
 			}
 		});
 		txtDescription.setColumns(10);
-		txtDescription.setBounds(109, 39, 472, 20);
+		txtDescription.setBounds(143, 39, 438, 20);
 		frmGestionArticles.getContentPane().add(txtDescription);
 		
 		JLabel lblLargeur = new JLabel("Largeur:");
@@ -123,7 +123,7 @@ public class EcranGestionArticle {
 			}
 		});
 		txtLargeur.setColumns(10);
-		txtLargeur.setBounds(109, 114, 472, 20);
+		txtLargeur.setBounds(143, 114, 438, 20);
 		frmGestionArticles.getContentPane().add(txtLargeur);
 		
 		JLabel lblQte = new JLabel("Qte en inventaire");
@@ -144,7 +144,7 @@ public class EcranGestionArticle {
 			}
 		});
 		txtQte.setColumns(10);
-		txtQte.setBounds(109, 198, 472, 20);
+		txtQte.setBounds(143, 198, 438, 20);
 		frmGestionArticles.getContentPane().add(txtQte);
 		
 		lblPrix = new JLabel("Prix:");
@@ -165,34 +165,34 @@ public class EcranGestionArticle {
 			}
 		});
 		txtPrix.setColumns(10);
-		txtPrix.setBounds(109, 226, 472, 20);
+		txtPrix.setBounds(143, 226, 438, 20);
 		frmGestionArticles.getContentPane().add(txtPrix);
 		
-		lbl = new JLabel("???:");
-		lbl.setBounds(10, 257, 69, 14);
-		frmGestionArticles.getContentPane().add(lbl);
+		lblFraisDouane = new JLabel("Frais de d\u00E9douanage:");
+		lblFraisDouane.setBounds(10, 257, 123, 14);
+		frmGestionArticles.getContentPane().add(lblFraisDouane);
 		
-		txtCourriel = new JTagTextField();
-		txtCourriel.addFocusListener(new FocusAdapter() {
+		txtFraisDouane = new JTagTextField();
+		txtFraisDouane.addFocusListener(new FocusAdapter() {
 			@Override
 			public void focusGained(FocusEvent e) {
-				txtCourriel.selectAll();
+				txtFraisDouane.selectAll();
 			}
 		});
-		txtCourriel.addKeyListener(new KeyAdapter() {
+		txtFraisDouane.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyReleased(KeyEvent arg0) {
-				setChampsNormal(txtCourriel);
+				setChampsNormal(txtFraisDouane);
 			}
 			@Override
 			public void keyPressed(KeyEvent e) {
-				setChampsNormal(txtCourriel);
+				setChampsNormal(txtFraisDouane);
 			}
 		});
-		txtCourriel.setForeground(new Color(0, 0, 0));
-		txtCourriel.setColumns(10);
-		txtCourriel.setBounds(109, 254, 472, 20);
-		frmGestionArticles.getContentPane().add(txtCourriel);
+		txtFraisDouane.setForeground(new Color(0, 0, 0));
+		txtFraisDouane.setColumns(10);
+		txtFraisDouane.setBounds(143, 254, 438, 20);
+		frmGestionArticles.getContentPane().add(txtFraisDouane);
 		
 		JButton btnEnregistrer = new JButton("Enregistrer");
 		btnEnregistrer.addMouseListener(new MouseAdapter() {
@@ -210,13 +210,14 @@ public class EcranGestionArticle {
 						double hauteur = Double.parseDouble(txtHauteur.getText());
 						double prix = Double.parseDouble(txtPrix.getText());
 						double qte = Double.parseDouble(txtQte.getText());
+						double fraisDouane = Double.parseDouble(txtFraisDouane.getText());
 
 					 
 						if (article == null) {
-							ctlArticles.ajouter(code, description, lougueur, largeur, hauteur, prix, qte);
+							ctlArticles.ajouter(code, description, lougueur, largeur, hauteur, prix, qte, fraisDouane);
 							article = ctlArticles.obtenirDernierArticle();
 						} else {
-						ctlArticles.modifier(article, code, description, lougueur, largeur, hauteur, prix, qte);
+						ctlArticles.modifier(article, code, description, lougueur, largeur, hauteur, prix, qte, fraisDouane);
 						}
 					
 						isDirty = false;
@@ -271,7 +272,7 @@ public class EcranGestionArticle {
 			}
 		});
 		txtHauteur.setColumns(10);
-		txtHauteur.setBounds(109, 142, 472, 20);
+		txtHauteur.setBounds(143, 142, 438, 20);
 		frmGestionArticles.getContentPane().add(txtHauteur);
 		
 		txtLongeur = new JTagTextField();
@@ -287,7 +288,7 @@ public class EcranGestionArticle {
 				txtLongeur.selectAll();
 			}
 		});
-		txtLongeur.setBounds(109, 83, 472, 20);
+		txtLongeur.setBounds(143, 83, 438, 20);
 		frmGestionArticles.getContentPane().add(txtLongeur);
 		txtLongeur.setColumns(10);
 		
@@ -325,6 +326,10 @@ public class EcranGestionArticle {
 			setChampsErreur(txtPrix, "Veuillez entrer un prix.");
 		}
 		
+		if (!Utils.isNumeric(txtPrix.getText())) {
+			setChampsErreur(txtPrix, "Veuillez des frais de douanes.");
+		}
+		
 		
 		return !txtCode.isInError() &&
 			   !txtDescription.isInError() &&
@@ -332,6 +337,7 @@ public class EcranGestionArticle {
 			   !txtQte.isInError() &&
 			   !txtPrix.isInError() &&
 			   !txtHauteur.isInError() &&
+			   !txtFraisDouane.isInError() &&
 			   !txtLongeur.isInError();
 	}
 	
@@ -343,7 +349,7 @@ public class EcranGestionArticle {
 		txtPrix.setText("");
 		txtHauteur.setText("");
 		txtLongeur.setText("");
-		txtCourriel.setText("");
+		txtFraisDouane.setText("");
 	}
 	
 	private void setChampsNormal(JTagTextField field) {
