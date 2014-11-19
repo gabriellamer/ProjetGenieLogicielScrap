@@ -78,7 +78,7 @@ public class EcranTraiterUneVente {
 		String[] columnNames = {"Code",
 								"Description",
 								"Prix un.",
-				                "Qté",
+				                "Qtï¿½",
 				                "Sous total ($)"
 				                };
 		
@@ -88,7 +88,7 @@ public class EcranTraiterUneVente {
 		table.setBounds(25, 106, 650, 184);
 		//contentPane.add(table);
 		JScrollPane scrollPane = new JScrollPane(table);
-		scrollPane.setBounds(25, 106, 650, 184);		//Important sinon le table n'est pas affiché
+		scrollPane.setBounds(25, 106, 650, 184);		//Important sinon le table n'est pas affichï¿½
 		contentPane.add(scrollPane);
 		
 		JLabel lblNoCarteClient = new JLabel("No. Carte Client");
@@ -215,7 +215,7 @@ public class EcranTraiterUneVente {
 		}
 		});
 		
-		//Écriture d'un caractère de # de client
+		//ï¿½criture d'un caractï¿½re de # de client
 		tNoCarteClient.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyTyped(KeyEvent ke) {
@@ -242,19 +242,32 @@ public class EcranTraiterUneVente {
 				}
 				else if(vente.retournerNombreLigne() == 0)
 				{
-					JOptionPane.showMessageDialog(frame, "Vous devez entrer au moins un atricle");
+					JOptionPane.showMessageDialog(frame, "Vous devez entrer au moins un article");
 				}
 				else
 				{	
-					//Assigne le client à la vente
-					vente.setClient(client);
-
-					//Ajoute la vente au registre
-					EcranPrincipal.ctlVentes.ajouterVente(vente);
-					ecranAfficherListeVentes.rafraichirListeVentes();
+					//Appeler la fenetre EcranTraiterPaiement
+					EcranTraiterPaiement ecranTraiterPaiement = new EcranTraiterPaiement(vente, client);
+					ecranTraiterPaiement.getFrame().setVisible(true);
+					
 					frame.setVisible(false);
+
+					/*
+					if(!ecranTraiterPaiement.isPaiementReussi()) {
+						JOptionPane.showMessageDialog(frame, "Le paiement n'a pas ete complete.");
+					}
+					else {
+						//Assigne le client ï¿½ la vente
+						vente.setClient(client);
+
+						//Ajoute la vente au registre
+						EcranPrincipal.ctlVentes.ajouterVente(vente);
+						ecranAfficherListeVentes.rafraichirListeVentes();
+						frame.setVisible(false);
+					}
+					*/
+					
 				}
-				
 			}
 		});
 		
@@ -275,7 +288,7 @@ public class EcranTraiterUneVente {
 		if (Utils.isNumeric(code)) {
 			client = EcranPrincipal.ctlClients.obtenirClientParNoCarteMembre(Integer.parseInt(code));
 
-			//Si le client est trouvé
+			//Si le client est trouvï¿½
 			if(client != null)
 			{
 				lblClientTrouve.setVisible(true);
