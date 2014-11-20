@@ -8,6 +8,7 @@ public class Article implements java.io.Serializable {
 	private double hauteur;
 	private double prix;
 	private double qteInventaire;
+	private double fraisDouane;
 	
 	
 	/*
@@ -15,7 +16,7 @@ public class Article implements java.io.Serializable {
 		this(RegistreClient.compteurIdentifiant, "", nom, prenom, dateNaissance, adresse, "", "");
 	}
 	*/
-	public Article(String code, String description, double longeur, double largeur, double hauteur, double prix, double qte) {
+	public Article(String code, String description, double longeur, double largeur, double hauteur, double prix, double qte, double fraisDouane) {
 	
 		this.code = code;
 		this.description = description;
@@ -24,6 +25,7 @@ public class Article implements java.io.Serializable {
 		this.hauteur = hauteur;
 		this.prix = prix;
 		this.qteInventaire = qte;
+		this.fraisDouane  = fraisDouane;
 	}
 	
 	public String getCode() {
@@ -80,6 +82,14 @@ public class Article implements java.io.Serializable {
 
 	public void setQteInventaire(double qte) {
 		this.qteInventaire = qte;
+	}
+	
+	public double getFraisDouane() {
+		return fraisDouane;
+	}
+
+	public void setFraisDouane(double fraisDouane) {
+		this.fraisDouane = fraisDouane;
 	}
 
 }

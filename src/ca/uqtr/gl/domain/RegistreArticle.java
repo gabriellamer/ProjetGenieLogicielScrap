@@ -23,13 +23,13 @@ public class RegistreArticle {
 	}
 
 	public void ajouterArticle(String code, String description, 
-			double longeur, double largeur, double hauteur, double prix, double qte) throws Exception {
+			double longeur, double largeur, double hauteur, double prix, double qte, double fraisDouane) throws Exception {
 
 		if(obtenirArticle(code) != null)
 		{
 			throw new Exception("code déjà existant");		
 		}
-		listeArticles.add(new Article(code, description, longeur, largeur, hauteur, prix, qte));
+		listeArticles.add(new Article(code, description, longeur, largeur, hauteur, prix, qte, fraisDouane));
 	}
 
 	public void supprimerArticle(Article article) {
@@ -37,7 +37,7 @@ public class RegistreArticle {
 	}
 
 	public void modifierArticle(Article a, String code, String description, 
-			double longeur, double largeur, double hauteur, double prix, double qte) {
+			double longeur, double largeur, double hauteur, double prix, double qte, double fraisDouane) {
 		
 		a.setCode(code);
 		a.setDescription(description);
@@ -45,6 +45,7 @@ public class RegistreArticle {
 		a.setLargeur(largeur);
 		a.setHauteur(hauteur);
 		a.setPrix(prix);
+		a.setFraisDouane(fraisDouane);
 	}
 	
 	public Article obtenirArticle(String code) {

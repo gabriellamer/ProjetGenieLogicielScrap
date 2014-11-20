@@ -6,15 +6,15 @@ import ca.uqtr.gl.domain.RegistreClient;
 
 public class Client extends Personne implements java.io.Serializable {
 	private int identifiant;
-	private String noCarteMembre;
+	private int noCarteMembre;
 	private String noTelephone;
 	private String courriel;
 	
 	public Client(String nom, String prenom, Date dateNaissance, Adresse adresse) {
-		this(RegistreClient.compteurIdentifiant, "", nom, prenom, dateNaissance, adresse, "", "");
+		this(RegistreClient.compteurIdentifiant, RegistreClient.compteurCarteMembre, nom, prenom, dateNaissance, adresse, "", "");
 	}
 	
-	public Client(int identifiant, String noCarteMembre, String nom, String prenom, Date dateNaissance, Adresse adresse, String noTel, String courriel) {
+	public Client(int identifiant, int noCarteMembre, String nom, String prenom, Date dateNaissance, Adresse adresse, String noTel, String courriel) {
 		super(nom, prenom, dateNaissance, adresse);
 		
 		this.identifiant = identifiant;
@@ -31,11 +31,11 @@ public class Client extends Personne implements java.io.Serializable {
 		this.identifiant = identifiant;
 	}
 
-	public String getNoCarteMembre() {
+	public int getNoCarteMembre() {
 		return noCarteMembre;
 	}
 
-	public void setNoCarteMembre(String noCarteMembre) {
+	public void setNoCarteMembre(int noCarteMembre) {
 		this.noCarteMembre = noCarteMembre;
 	}
 

@@ -12,6 +12,7 @@ import javax.swing.JButton;
 import ca.uqtr.gl.controllers.ControlleurArticles;
 import ca.uqtr.gl.controllers.ControlleurClients;
 import ca.uqtr.gl.controllers.ControlleurVentes;
+import ca.uqtr.gl.entities.Vente;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -34,16 +35,24 @@ public class EcranPrincipal {
 	 * Create the frame.
 	 */
 	public EcranPrincipal() {
-
-		
-		ctlClients.ajouter("Tremblay", "Carl", null, null, "(450) 222-3333", "carl@gmail.com");
-		ctlClients.ajouter("Roy", "Bob", null, null, "(450) 444-5555", "roy@gmail.com");
+		/*ctlClients.ajouter("Tremblay", "Carl", null, null, "(450) 222-3333", "carl@gmail.com");
+		ctlClients.ajouter("Roy", "Bob", null, null, "(450) 444-5555", "roy@gmail.com");*/
 		
 		/*try
 		{
 			ctlArticles.ajouter("SKI1213", "Ski alpin", 12, 12, 12, 340, 5);
 			ctlArticles.ajouter("RAQ3434", "Raquette de tennis", 12, 12, 12, 100, 4);
 			ctlArticles.ajouter("BAL1000", "Balle de baseball", 12, 12, 12, 4.99, 15);
+			
+			Vente v1 = new Vente();
+			v1.setClient(ctlClients.obtenirClientParNoCarteMembre(1000));
+			v1.ajouterLigne(2, ctlArticles.obtenirArticle("SKI1213"));
+			ctlVentes.ajouterVente(v1);
+			
+			Vente v2 = new Vente();
+			v2.setClient(ctlClients.obtenirClientParNoCarteMembre(1001));
+			v2.ajouterLigne(3, ctlArticles.obtenirArticle("SKI1213"));
+			ctlVentes.ajouterVente(v2);
 		}
 		catch(Exception e)
 		{
@@ -91,8 +100,19 @@ public class EcranPrincipal {
 		//Traiter une vente
 		btnTraiterUneVente.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				EcranTraiterUneVente window = new EcranTraiterUneVente();
+				//EcranTraiterUneVente window = new EcranTraiterUneVente();
+				EcranAfficherListeVentes window = new EcranAfficherListeVentes();
 				window.getFrame().setVisible(true);
+			}
+		});
+		
+		
+		//Gestion des Articles
+		btnGererArticles.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+				EcranGestionArticle window = new EcranGestionArticle(ctlArticles);
+				window.frmGestionArticles.setVisible(true);
 			}
 		});
 		

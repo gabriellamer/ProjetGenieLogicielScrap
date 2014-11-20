@@ -18,6 +18,7 @@ import ca.uqtr.gl.entities.Article;
 import ca.uqtr.gl.entities.Client;
 import ca.uqtr.gl.entities.Vente;
 import ca.uqtr.gl.ui.components.VenteTableDataModel;
+import ca.uqtr.gl.util.Utils;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -42,16 +43,28 @@ public class EcranTraiterUneVente {
 	private JLabel lblClientNonTrouve;
 	private JButton btnSupprimer;
 	private JButton btnTerminerLaVente;
-	
+	private final EcranAfficherListeVentes ecranAfficherListeVentes;
 	private VenteTableDataModel dataModel;
 	private Vente vente;
+	private boolean lectureSeule = false;
 	private Client client = null;
 	
 	
-	public EcranTraiterUneVente() {
+	public EcranTraiterUneVente(EcranAfficherListeVentes ecranAfficherListeVentes, Vente venteSel) {
 		
 		frame = new JFrame();
-		vente = new Vente();
+		this.ecranAfficherListeVentes = ecranAfficherListeVentes;
+		
+		if(venteSel != null)
+		{
+			lectureSeule = true;
+			vente = venteSel;
+		}
+		else
+		{
+			vente = new Vente();
+		}
+		
 		
 		frame.setTitle("Traiter une vente");
 		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -65,7 +78,7 @@ public class EcranTraiterUneVente {
 		String[] columnNames = {"Code",
 								"Description",
 								"Prix un.",
-				                "Qté",
+				                "Qtï¿½",
 				                "Sous total ($)"
 				                };
 		
@@ -75,7 +88,7 @@ public class EcranTraiterUneVente {
 		table.setBounds(25, 106, 650, 184);
 		//contentPane.add(table);
 		JScrollPane scrollPane = new JScrollPane(table);
-		scrollPane.setBounds(25, 106, 650, 184);		//Important sinon le table n'est pas affiché
+		scrollPane.setBounds(25, 106, 650, 184);		//Important sinon le table n'est pas affichï¿½
 		contentPane.add(scrollPane);
 		
 		JLabel lblNoCarteClient = new JLabel("No. Carte Client");
@@ -155,10 +168,22 @@ public class EcranTraiterUneVente {
 		lblClientTrouve.setVisible(false);
 		lblClientNonTrouve.setVisible(false);
 		
+		
+		
+		
+		if(lectureSeule)
+		{
+			btnAjouter.setVisible(false);
+			btnTerminerLaVente.setVisible(false);
+			btnSupprimer.setVisible(false);
+			
+			tNoCarteClient.setText(String.valueOf(vente.getClient().getNoCarteMembre()));
+			tNoCarteClient.setEnabled(false);
+			rafraichirDonnees();
+			
+		}
+		
 		initListeners();
-		
-		
-		
 		
 	}
 	
@@ -190,7 +215,7 @@ public class EcranTraiterUneVente {
 		}
 		});
 		
-		//Écriture d'un caractère de # de client
+		//ï¿½criture d'un caractï¿½re de # de client
 		tNoCarteClient.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyTyped(KeyEvent ke) {
@@ -217,18 +242,32 @@ public class EcranTraiterUneVente {
 				}
 				else if(vente.retournerNombreLigne() == 0)
 				{
-					JOptionPane.showMessageDialog(frame, "Vous devez entrer au moins un atricle");
+					JOptionPane.showMessageDialog(frame, "Vous devez entrer au moins un article");
 				}
 				else
 				{	
-					//Assigne le client à la vente
-					vente.setClient(client);
+					//Appeler la fenetre EcranTraiterPaiement
+					EcranTraiterPaiement ecranTraiterPaiement = new EcranTraiterPaiement(vente, client);
+					ecranTraiterPaiement.getFrame().setVisible(true);
 					
-					//Ajoute la vente au registre
-					EcranPrincipal.ctlVentes.ajouterVente(vente);
 					frame.setVisible(false);
+
+					/*
+					if(!ecranTraiterPaiement.isPaiementReussi()) {
+						JOptionPane.showMessageDialog(frame, "Le paiement n'a pas ete complete.");
+					}
+					else {
+						//Assigne le client ï¿½ la vente
+						vente.setClient(client);
+
+						//Ajoute la vente au registre
+						EcranPrincipal.ctlVentes.ajouterVente(vente);
+						ecranAfficherListeVentes.rafraichirListeVentes();
+						frame.setVisible(false);
+					}
+					*/
+					
 				}
-				
 			}
 		});
 		
@@ -246,20 +285,21 @@ public class EcranTraiterUneVente {
 	
 	private void assignerClientParCode(String code)
 	{
-		client = EcranPrincipal.ctlClients.obtenirClient(code);
+		if (Utils.isNumeric(code)) {
+			client = EcranPrincipal.ctlClients.obtenirClientParNoCarteMembre(Integer.parseInt(code));
 
-
-		//Si le client est trouvé
-		if(client != null)
-		{
-			lblClientTrouve.setVisible(true);
-			lblClientNonTrouve.setVisible(false);
-		}
-		else
-		{
-			client = null;
-			lblClientTrouve.setVisible(false);
-			lblClientNonTrouve.setVisible(true);
+			//Si le client est trouvï¿½
+			if(client != null)
+			{
+				lblClientTrouve.setVisible(true);
+				lblClientNonTrouve.setVisible(false);
+			}
+			else
+			{
+				client = null;
+				lblClientTrouve.setVisible(false);
+				lblClientNonTrouve.setVisible(true);
+			}
 		}
 	}
 

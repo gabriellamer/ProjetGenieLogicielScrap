@@ -120,4 +120,9 @@ public class Vente implements java.io.Serializable {
 	    bd = bd.setScale(2, RoundingMode.HALF_EVEN);
 	    return bd.doubleValue();
 	}
+	
+	public String toString()
+	{
+		return String.valueOf(this.numeroFacture);
+	}
 }

@@ -12,6 +12,7 @@ public class RegistreClient {
 	
 	// identifiant unique pour nouveau client
 	public static int compteurIdentifiant = 0;
+	public static int compteurCarteMembre = 1000;
 		
 	public RegistreClient() {
 		if (listeClients == null) {
@@ -29,15 +30,7 @@ public class RegistreClient {
 
 	public void ajouterClient(String nom, String prenom, 
 			Date dateNaissance, Adresse adresse, String noTel, String courriel) {
-		String noCarteMembre = "";
-		Client c = null;
-		
-		do {
-			noCarteMembre = Utils.obtenirChaineAleatoire(6);
-			c = obtenirClient(noCarteMembre);
-		} while (c != null);
-		
-		listeClients.add(new Client(++compteurIdentifiant, noCarteMembre, nom, prenom, dateNaissance, adresse, noTel, courriel));
+		listeClients.add(new Client(++compteurIdentifiant, compteurCarteMembre++, nom, prenom, dateNaissance, adresse, noTel, courriel));
 	}
 
 	public void supprimerClient(Client client) {
@@ -65,9 +58,9 @@ public class RegistreClient {
 		return null;
 	}
 	
-	public Client obtenirClient(String noCarteMembre) {
+	public Client obtenirClientParNoCarteMembre(int noCarteMembre) {
 		for(Client c : listeClients) {
-			if (c.getNoCarteMembre().equalsIgnoreCase(noCarteMembre)) {
+			if (c.getNoCarteMembre() == noCarteMembre) {
 				return c;
 			}	
 		}

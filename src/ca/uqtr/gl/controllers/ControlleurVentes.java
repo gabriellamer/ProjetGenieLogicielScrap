@@ -1,5 +1,7 @@
 package ca.uqtr.gl.controllers;
 
+import java.util.ArrayList;
+
 import ca.uqtr.gl.domain.RegistreArticle;
 import ca.uqtr.gl.domain.RegistreVente;
 import ca.uqtr.gl.entities.Vente;
@@ -15,7 +17,7 @@ public class ControlleurVentes {
 	}
 	public void ajouterVente(Vente vente)
 	{
-		vente.setNumeroFacture(numeroFactureCompteur);
+		vente.setNumeroFacture(numeroFactureCompteur++);
 		registreVentes.ajouterVente(vente);
 	}
 	
@@ -27,6 +29,11 @@ public class ControlleurVentes {
 	public Vente obtenirVenteParNumeroFacture(int numeroFacture)
 	{
 		return registreVentes.obtenirVenteParNumeroFacture(numeroFacture);
+	}
+	
+	public ArrayList<Vente> getListeVentes()
+	{
+		return registreVentes.getListeVentes();
 	}
 	
 }

@@ -34,4 +34,12 @@ public class RegistreVente {
 		
 		return null;
 	}
+	public static ArrayList<Vente> getListeVentes() {
+		return listeVentes;
+	}
+	public static void setListeVentes(ArrayList<Vente> listeVentes) {
+		RegistreVente.listeVentes = listeVentes;
+	}
+	
+	
 }
