@@ -3,7 +3,10 @@ package ca.uqtr.gl.ui;
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 import java.awt.Dialog.ModalExclusionType;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTable;
@@ -46,7 +49,7 @@ public class EcranListeClient extends JFrame {
 		dataModel = new ListeClientTableDataModel(columnNames);
 		
 		table = new JTable(dataModel);
-		table.setBounds(0, 0, 450, 278);
+		table.setBounds(0, 0, 450, 240);
 		
 		table.addMouseListener(new java.awt.event.MouseAdapter() {
 		    @Override
@@ -61,8 +64,19 @@ public class EcranListeClient extends JFrame {
 		});
 		
 		JScrollPane scrollPane = new JScrollPane(table);
-		scrollPane.setBounds(0, 0, 450, 278);
+		scrollPane.setBounds(0, 0, 450, 240);
 		contentPane.add(scrollPane);
+		
+		JButton btnAjouter = new JButton("Ajouter");
+		btnAjouter.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				EcranGestionClient window = new EcranGestionClient(EcranPrincipal.ctlClients);
+				window.frmGestionClient.setVisible(true);
+			}
+		});
+		btnAjouter.setBounds(320, 247, 115, 26);
+		contentPane.add(btnAjouter);
 	}
 	
 	public JFrame getFrame()
