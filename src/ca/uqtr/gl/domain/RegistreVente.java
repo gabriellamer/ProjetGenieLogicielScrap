@@ -6,7 +6,7 @@ import ca.uqtr.gl.entities.Article;
 import ca.uqtr.gl.entities.Vente;
 
 public class RegistreVente {
-	private static ArrayList<Vente> listeVentes;
+	public static ArrayList<Vente> listeVentes;
 	
 	public RegistreVente()
 	{

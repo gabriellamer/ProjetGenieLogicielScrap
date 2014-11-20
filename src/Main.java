@@ -1,8 +1,7 @@
 
 import java.awt.EventQueue;
 
-import ca.uqtr.gl.controllers.ControlleurArticles;
-import ca.uqtr.gl.controllers.ControlleurClients;
+import ca.uqtr.gl.services.ArchiveTimer;
 import ca.uqtr.gl.ui.EcranPrincipal;
 
 public class Main {	
@@ -15,6 +14,7 @@ public class Main {
 					
 					EcranPrincipal window = new EcranPrincipal();
 					window.getFrame().setVisible(true);
+					ArchiveTimer timer = new ArchiveTimer();
 				} catch (Exception e) {
 					e.printStackTrace();
 				}

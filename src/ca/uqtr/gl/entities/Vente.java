@@ -8,7 +8,7 @@ import java.util.Date;
 import java.util.List;
 
 
-public class Vente {
+public class Vente implements java.io.Serializable {
 	public final static double TPS = 0.05;
 	public final static double TVQ = 0.09975;
 	
@@ -113,7 +113,7 @@ public class Vente {
 		this.listeLignesVente = listeLignesVente;
 	}
 
-	//Arrondi un double avec 2 décimales
+	//Arrondi un double avec 2 dï¿½cimales
 	private static double arrondir(double valeur)
 	{
 		BigDecimal bd = new BigDecimal(valeur);

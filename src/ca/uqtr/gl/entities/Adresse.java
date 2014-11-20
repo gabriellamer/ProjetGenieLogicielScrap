@@ -1,6 +1,6 @@
 package ca.uqtr.gl.entities;
 
-public class Adresse {
+public class Adresse implements java.io.Serializable {
 	private int noCivique;
 	private String odonyme;
 	private String ville;

@@ -4,7 +4,7 @@ import java.util.Date;
 
 import ca.uqtr.gl.domain.RegistreClient;
 
-public class Prepose extends Employe {
+public class Prepose extends Employe implements java.io.Serializable {
 	
 	private RegistreClient registre;
 
@@ -14,5 +14,4 @@ public class Prepose extends Employe {
 		
 		this.registre = registre;
 	}
-
 }

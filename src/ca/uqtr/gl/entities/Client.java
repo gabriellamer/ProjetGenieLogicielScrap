@@ -4,7 +4,7 @@ import java.util.Date;
 
 import ca.uqtr.gl.domain.RegistreClient;
 
-public class Client extends Personne {
+public class Client extends Personne implements java.io.Serializable {
 	private int identifiant;
 	private String noCarteMembre;
 	private String noTelephone;

@@ -21,7 +21,7 @@ import java.awt.Dialog.ModalExclusionType;
 
 public class EcranPrincipal {
 
-	//Mauvaise programmation, sera remplacé par un singleton dans l'autre projet.
+	//Mauvaise programmation, sera remplacï¿½ par un singleton dans l'autre projet.
 	public final static ControlleurClients ctlClients = new ControlleurClients();
 	public final static ControlleurArticles ctlArticles = new ControlleurArticles();
 	public final static ControlleurVentes ctlVentes = new ControlleurVentes();
@@ -35,11 +35,11 @@ public class EcranPrincipal {
 	 */
 	public EcranPrincipal() {
 
-/*		
+		
 		ctlClients.ajouter("Tremblay", "Carl", null, null, "(450) 222-3333", "carl@gmail.com");
 		ctlClients.ajouter("Roy", "Bob", null, null, "(450) 444-5555", "roy@gmail.com");
 		
-		try
+		/*try
 		{
 			ctlArticles.ajouter("SKI1213", "Ski alpin", 12, 12, 12, 340, 5);
 			ctlArticles.ajouter("RAQ3434", "Raquette de tennis", 12, 12, 12, 100, 4);
@@ -52,8 +52,8 @@ public class EcranPrincipal {
 		
 		
 		System.out.println(ctlClients.obtenirClient(1).getNoCarteMembre());
-		System.out.println(ctlClients.obtenirClient(2).getNoCarteMembre());
-*/		
+		System.out.println(ctlClients.obtenirClient(2).getNoCarteMembre());*/
+				
 		frame = new JFrame();
 		frame.setModalExclusionType(ModalExclusionType.APPLICATION_EXCLUDE);
 		
@@ -83,8 +83,8 @@ public class EcranPrincipal {
 		btnGererClients.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				
-				EcranGestionClient window = new EcranGestionClient(ctlClients);
-				window.frmGestionClient.setVisible(true);
+				EcranListeClient window = new EcranListeClient(ctlClients);
+				window.frame.setVisible(true);
 			}
 		});
 		

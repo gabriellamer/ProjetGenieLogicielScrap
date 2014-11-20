@@ -2,7 +2,7 @@ package ca.uqtr.gl.entities;
 
 import java.util.Date;
 
-public class Personne {
+public class Personne implements java.io.Serializable {
 
 	protected String nom;
 	protected String prenom;

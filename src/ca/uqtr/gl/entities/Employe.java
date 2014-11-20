@@ -2,7 +2,7 @@ package ca.uqtr.gl.entities;
 
 import java.util.Date;
 
-public class Employe extends Personne {
+public class Employe extends Personne implements java.io.Serializable {
 	private int noEmploye;
 	private String titre;
 	

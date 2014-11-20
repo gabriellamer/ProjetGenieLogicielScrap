@@ -1,6 +1,6 @@
 package ca.uqtr.gl.entities;
 
-public class Article {
+public class Article implements java.io.Serializable {
 	private String code;
 	private String description;
 	private double longeur;

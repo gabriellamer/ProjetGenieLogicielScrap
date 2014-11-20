@@ -1,6 +1,6 @@
 package ca.uqtr.gl.entities;
 
-public class LigneVente {
+public class LigneVente implements java.io.Serializable {
 	
 	private int quantite;
 	private Article article;
