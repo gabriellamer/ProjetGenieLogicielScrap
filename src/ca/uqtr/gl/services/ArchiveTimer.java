@@ -24,7 +24,7 @@ import ca.uqtr.gl.ui.EcranPrincipal;
 public class ArchiveTimer {
 	private Timer timer;
 	private TimerTask minuteTask;
-	private final int TIME = 1000 * 5;
+	private final int TIME = 1000 * 60;
 	
 	public ArchiveTimer() {
 		timer = new Timer();
