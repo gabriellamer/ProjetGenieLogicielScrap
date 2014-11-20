@@ -7,6 +7,7 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import javax.swing.JButton;
@@ -49,6 +50,19 @@ public class EcranGestionClient {
 		this.ctlClients = controlleur;
 		this.client = c;
 		this.isDirty = (c == null);
+		
+		if (c != null) {
+			txtNom.setText(c.getNom());
+			txtPrenom.setText(c.getPrenom());
+			txtNoCivique.setText(String.valueOf(c.getAdresse().getNoCivique()));
+			txtVille.setText(c.getAdresse().getVille());
+			txtCodePostal.setText(c.getAdresse().getCodePostal());
+			txtCourriel.setText(c.getCourriel());
+			txtOdonyme.setText(c.getAdresse().getOdonyme());
+			String dateNaissance = new SimpleDateFormat("dd-mm-yyyy hh:MM:ss").format(c.getDateNaissance());
+			txtDateNaissance.setText(dateNaissance);
+			txtTelephone.setText(c.getNoTelephone());
+		}
 	}
 
 	/**
@@ -235,6 +249,7 @@ public class EcranGestionClient {
 					if (client == null) {
 						ctlClients.ajouter(nom, prenom, dateNaissance, adresse, telephone, courriel);
 						client = ctlClients.obtenirDernierClient();
+						frmGestionClient.dispose();
 					} else {
 						ctlClients.modifier(client, nom, prenom, dateNaissance, adresse, telephone, courriel);
 					}
@@ -261,6 +276,12 @@ public class EcranGestionClient {
 		frmGestionClient.getContentPane().add(btnSupprimer);
 		
 		JButton btnAnnuler = new JButton("Annuler");
+		btnAnnuler.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				frmGestionClient.dispose();
+			}
+		});
 		btnAnnuler.setBounds(466, 323, 115, 23);
 		frmGestionClient.getContentPane().add(btnAnnuler);
 		

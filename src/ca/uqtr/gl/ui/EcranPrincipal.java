@@ -1,22 +1,18 @@
 package ca.uqtr.gl.ui;
 
 
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
+import java.awt.Dialog.ModalExclusionType;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-import javax.swing.JButton;
 
 import ca.uqtr.gl.controllers.ControlleurArticles;
 import ca.uqtr.gl.controllers.ControlleurClients;
 import ca.uqtr.gl.controllers.ControlleurVentes;
-import ca.uqtr.gl.entities.Vente;
-
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-import java.awt.Dialog.ModalExclusionType;
 
 
 

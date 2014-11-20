@@ -1,21 +1,20 @@
 package ca.uqtr.gl.ui;
 
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
 import java.awt.Dialog.ModalExclusionType;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.border.EmptyBorder;
-import javax.swing.JScrollPane;
 
 import ca.uqtr.gl.controllers.ControlleurClients;
 import ca.uqtr.gl.ui.components.ListeClientTableDataModel;
-import ca.uqtr.gl.ui.components.VenteTableDataModel;
 
 public class EcranListeClient extends JFrame {
 
@@ -73,6 +72,36 @@ public class EcranListeClient extends JFrame {
 			public void mouseClicked(MouseEvent e) {
 				EcranGestionClient window = new EcranGestionClient(EcranPrincipal.ctlClients);
 				window.frmGestionClient.setVisible(true);
+				
+				window.frmGestionClient.addWindowListener(new WindowListener() {
+
+					public void windowActivated(WindowEvent arg0) {
+						
+					}
+
+					public void windowClosed(WindowEvent arg0) {
+					}
+
+					public void windowClosing(WindowEvent arg0) {
+						
+					}
+
+					public void windowDeactivated(WindowEvent arg0) {
+						
+					}
+
+					public void windowDeiconified(WindowEvent arg0) {
+						
+					}
+
+					public void windowIconified(WindowEvent arg0) {
+						
+					}
+
+					public void windowOpened(WindowEvent arg0) {
+						
+					}
+				});
 			}
 		});
 		btnAjouter.setBounds(320, 247, 115, 26);
