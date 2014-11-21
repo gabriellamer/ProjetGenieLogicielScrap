@@ -36,7 +36,6 @@ public class EcranListeClient extends JFrame {
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		frame.setContentPane(contentPane);
-		contentPane.setLayout(null);
 		
 		//Titres de colonnes
 		String[] columnNames = {
@@ -61,12 +60,14 @@ public class EcranListeClient extends JFrame {
 		        }
 		    }
 		});
+		contentPane.setLayout(null);
 		
 		JScrollPane scrollPane = new JScrollPane(table);
 		scrollPane.setBounds(0, 0, 450, 240);
 		contentPane.add(scrollPane);
 		
 		JButton btnAjouter = new JButton("Ajouter");
+		btnAjouter.setBounds(320, 247, 115, 26);
 		btnAjouter.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -80,6 +81,7 @@ public class EcranListeClient extends JFrame {
 					}
 
 					public void windowClosed(WindowEvent arg0) {
+						table.updateUI();
 					}
 
 					public void windowClosing(WindowEvent arg0) {
@@ -104,7 +106,6 @@ public class EcranListeClient extends JFrame {
 				});
 			}
 		});
-		btnAjouter.setBounds(320, 247, 115, 26);
 		contentPane.add(btnAjouter);
 	}
 	
