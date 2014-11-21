@@ -107,8 +107,8 @@ public class EcranPrincipal {
 		btnGererArticles.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				
-				EcranGestionArticle window = new EcranGestionArticle(ctlArticles);
-				window.frmGestionArticles.setVisible(true);
+				EcranListeArticle window = new EcranListeArticle(ctlArticles);
+				window.frame.setVisible(true);
 			}
 		});
 		
