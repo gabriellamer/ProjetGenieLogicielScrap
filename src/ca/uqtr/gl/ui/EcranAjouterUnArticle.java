@@ -151,7 +151,7 @@ public class EcranAjouterUnArticle {
 		{
 			
 			tNomArticle.setText(articleSelectionne.getDescription());
-			tPrixUnitaire.setText(String.valueOf(articleSelectionne.getPprix()));
+			tPrixUnitaire.setText(String.valueOf(articleSelectionne.getPrix()));
 			
 			
 		}

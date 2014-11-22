@@ -13,7 +13,7 @@ public class LigneVente implements java.io.Serializable {
 
 	public double getTotal()
 	{
-		return quantite * article.getPprix();
+		return quantite * article.getPrix();
 	}
 	
 	public int getQuantite() {

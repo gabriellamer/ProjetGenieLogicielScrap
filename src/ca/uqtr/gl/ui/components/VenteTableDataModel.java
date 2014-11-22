@@ -51,7 +51,7 @@ public class VenteTableDataModel extends AbstractTableModel {
 			
 			case 1 : return ligneVente.getArticle().getDescription();
 
-			case 2 : return ligneVente.getArticle().getPprix();
+			case 2 : return ligneVente.getArticle().getPrix();
 
 			case 3 : return ligneVente.getQuantite();
 

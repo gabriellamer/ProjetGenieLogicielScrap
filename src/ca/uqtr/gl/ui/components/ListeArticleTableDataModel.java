@@ -42,7 +42,7 @@ public class ListeArticleTableDataModel extends AbstractTableModel {
 
 			case 2 : return a.getQteInventaire();
 			
-			case 3 : return a.getPprix();
+			case 3 : return a.getPrix();
 		}
 		
 		return null;

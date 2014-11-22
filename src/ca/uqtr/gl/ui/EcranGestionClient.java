@@ -18,6 +18,8 @@ import ca.uqtr.gl.controllers.ControlleurClients;
 import ca.uqtr.gl.entities.Adresse;
 import ca.uqtr.gl.entities.Client;
 import ca.uqtr.gl.util.Utils;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class EcranGestionClient {
 
@@ -276,6 +278,10 @@ public class EcranGestionClient {
 		frmGestionClient.getContentPane().add(btnSupprimer);
 		
 		JButton btnAnnuler = new JButton("Annuler");
+		btnAnnuler.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+			}
+		});
 		btnAnnuler.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {

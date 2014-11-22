@@ -13,12 +13,17 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 
 
+
+
 import ca.uqtr.gl.controllers.ControlleurArticles;
+import ca.uqtr.gl.controllers.ControlleurClients;
 import ca.uqtr.gl.entities.Article;
+import ca.uqtr.gl.entities.Client;
 import ca.uqtr.gl.util.Utils;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.text.SimpleDateFormat;
 
 public class EcranGestionArticle {
 
@@ -37,6 +42,7 @@ public class EcranGestionArticle {
 	private JTagTextField txtFraisDouane;
 	private JTagTextField txtHauteur;
 	private JTagTextField txtLongeur;
+	private JTagTextField txtProvenance;
 
 	public EcranGestionArticle(ControlleurArticles controlleur) {
 		this(controlleur, null);
@@ -45,12 +51,28 @@ public class EcranGestionArticle {
 	/**
 	 * @wbp.parser.constructor
 	 */
-	public EcranGestionArticle(ControlleurArticles controlleur, Article c) {
+	public EcranGestionArticle(ControlleurArticles controlleur, Article a) {
 		initialize();
 		this.ctlArticles = controlleur;
-		this.article = c;
-		this.isDirty = (c == null);
+		this.article = a;
+		this.isDirty = (a == null);
+		
+		if (a != null) {			
+			txtCode.setText(a.getCode());
+			txtDescription.setText(a.getDescription());
+			txtLargeur.setText(Double.toString(a.getLargeur()));
+			txtQte.setText(Double.toString(a.getQteInventaire()));
+			txtPrix.setText(Double.toString(a.getPrix()));
+			txtHauteur.setText(Double.toString(a.getHauteur()));
+			txtLongeur.setText(Double.toString(a.getLongeur()));
+			txtFraisDouane.setText(Double.toString(a.getFraisDouane()));
+			txtProvenance.setText(a.getProvenance());
+		
+		}
+		
+		
 	}
+
 
 	/**
 	 * Initialize the contents of the frame.
@@ -169,7 +191,7 @@ public class EcranGestionArticle {
 		frmGestionArticles.getContentPane().add(txtPrix);
 		
 		lblFraisDouane = new JLabel("Frais de d\u00E9douanage:");
-		lblFraisDouane.setBounds(10, 257, 123, 14);
+		lblFraisDouane.setBounds(10, 288, 123, 14);
 		frmGestionArticles.getContentPane().add(lblFraisDouane);
 		
 		txtFraisDouane = new JTagTextField();
@@ -191,10 +213,14 @@ public class EcranGestionArticle {
 		});
 		txtFraisDouane.setForeground(new Color(0, 0, 0));
 		txtFraisDouane.setColumns(10);
-		txtFraisDouane.setBounds(143, 254, 438, 20);
+		txtFraisDouane.setBounds(143, 285, 438, 20);
 		frmGestionArticles.getContentPane().add(txtFraisDouane);
 		
 		JButton btnEnregistrer = new JButton("Enregistrer");
+		btnEnregistrer.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+			}
+		});
 		btnEnregistrer.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
@@ -211,13 +237,15 @@ public class EcranGestionArticle {
 						double prix = Double.parseDouble(txtPrix.getText());
 						double qte = Double.parseDouble(txtQte.getText());
 						double fraisDouane = Double.parseDouble(txtFraisDouane.getText());
+						String provenance = txtProvenance.getText();
+					
 
 					 
 						if (article == null) {
-							ctlArticles.ajouter(code, description, lougueur, largeur, hauteur, prix, qte, fraisDouane);
+							ctlArticles.ajouter(code, description, lougueur, largeur, hauteur, prix, qte, fraisDouane, provenance);
 							article = ctlArticles.obtenirDernierArticle();
 						} else {
-						ctlArticles.modifier(article, code, description, lougueur, largeur, hauteur, prix, qte, fraisDouane);
+						ctlArticles.modifier(article, code, description, lougueur, largeur, hauteur, prix, qte, fraisDouane, provenance);
 						}
 					
 						isDirty = false;
@@ -251,6 +279,16 @@ public class EcranGestionArticle {
 		frmGestionArticles.getContentPane().add(btnSupprimer);
 		
 		JButton btnAnnuler = new JButton("Annuler");
+		btnAnnuler.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+			}
+		});
+		btnAnnuler.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				frmGestionArticles.dispose();
+			}
+		});
 		btnAnnuler.setBounds(466, 323, 115, 23);
 		frmGestionArticles.getContentPane().add(btnAnnuler);
 		
@@ -295,6 +333,16 @@ public class EcranGestionArticle {
 		JLabel lblDateNais = new JLabel("Longeur:");
 		lblDateNais.setBounds(10, 86, 113, 14);
 		frmGestionArticles.getContentPane().add(lblDateNais);
+		
+		JLabel lblProvenance = new JLabel("Provenance:");
+		lblProvenance.setBounds(10, 257, 123, 14);
+		frmGestionArticles.getContentPane().add(lblProvenance);
+		
+		txtProvenance = new JTagTextField();
+		txtProvenance.setForeground(Color.BLACK);
+		txtProvenance.setColumns(10);
+		txtProvenance.setBounds(143, 257, 438, 20);
+		frmGestionArticles.getContentPane().add(txtProvenance);
 	}
 	
 	private boolean validerChampsRequis() {
@@ -350,6 +398,7 @@ public class EcranGestionArticle {
 		txtHauteur.setText("");
 		txtLongeur.setText("");
 		txtFraisDouane.setText("");
+		txtProvenance.setText("");
 	}
 	
 	private void setChampsNormal(JTagTextField field) {

@@ -23,8 +23,8 @@ public class ControlleurArticles {
 	}
 	
 	public void ajouter(String code, String description, 
-			double longeur, double largeur, double hauteur, double prix, double qte, double fraisDouane) throws Exception {
-		registreArticle.ajouterArticle(code, description, longeur, largeur, hauteur, prix, qte, fraisDouane);
+			double longeur, double largeur, double hauteur, double prix, double qte, double fraisDouane, String provenance) throws Exception {
+		registreArticle.ajouterArticle(code, description, longeur, largeur, hauteur, prix, qte, fraisDouane, provenance);
 	}
 
 	public void supprimer(Article a) {
@@ -32,8 +32,8 @@ public class ControlleurArticles {
 	}
 
 	public void modifier(Article a, String code, String description, 
-			double longeur, double largeur, double hauteur, double prix, double qte, double fraisDouane) {
-		registreArticle.modifierArticle(a, code, description, longeur, largeur, hauteur, prix, qte, fraisDouane);
+			double longeur, double largeur, double hauteur, double prix, double qte, double fraisDouane, String provenance) {
+		registreArticle.modifierArticle(a, code, description, longeur, largeur, hauteur, prix, qte, fraisDouane, provenance);
 	}
 	
 	public RegistreArticle getRegistreArticle() {
