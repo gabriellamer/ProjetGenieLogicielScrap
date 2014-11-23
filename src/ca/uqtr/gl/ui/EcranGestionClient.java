@@ -271,7 +271,7 @@ public class EcranGestionClient {
 					ctlClients.supprimer(client);
 					viderChamps();
 					client = null;
-					frmGestionClient.dispose();
+					frmGestionClient.dispose(); 
 				}
 			}
 		});
