@@ -20,6 +20,7 @@ import ca.uqtr.gl.entities.Vente;
 import ca.uqtr.gl.ui.components.VenteTableDataModel;
 import ca.uqtr.gl.util.Utils;
 
+import java.awt.Dialog.ModalExclusionType;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Font;
@@ -68,6 +69,7 @@ public class EcranTraiterUneVente {
 		
 		frame.setTitle("Traiter une vente");
 		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		
 		frame.setBounds(100, 100, 789, 515);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
