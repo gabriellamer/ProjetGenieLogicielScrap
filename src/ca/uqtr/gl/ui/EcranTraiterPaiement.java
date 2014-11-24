@@ -41,6 +41,10 @@ public class EcranTraiterPaiement {
 	private JTextField textFieldMontantRecu;
 	private JTextField textFieldMonnaie;
 	
+	private JRadioButton rdbtnEspeces;
+	private JRadioButton rdbtnCarte;
+	private JRadioButton rdbtnCheque;
+	
 	private boolean isPaiementReussi = false;
 	
 	private Vente vente;
@@ -69,22 +73,22 @@ public class EcranTraiterPaiement {
 		lblModeDePaiement.setBounds(6, 6, 178, 16);
 		contentPane.add(lblModeDePaiement);
 		
-		JRadioButton rdbtnEspces = new JRadioButton("Especes");
-		rdbtnEspces.setSelected(true);
-		buttonGroup.add(rdbtnEspces);
-		rdbtnEspces.setBounds(6, 34, 91, 23);
-		contentPane.add(rdbtnEspces);
+		rdbtnEspeces = new JRadioButton("Especes");
+		rdbtnEspeces.setSelected(true);
+		buttonGroup.add(rdbtnEspeces);
+		rdbtnEspeces.setBounds(6, 34, 91, 23);
+		contentPane.add(rdbtnEspeces);
 		
-		JRadioButton rdbtnCarte = new JRadioButton("Carte");
+		rdbtnCarte = new JRadioButton("Carte");
 		buttonGroup.add(rdbtnCarte);
 		rdbtnCarte.setBounds(101, 34, 83, 23);
 		contentPane.add(rdbtnCarte);
 		
-		JRadioButton rdbtnChque = new JRadioButton("Chèque");
-		buttonGroup.add(rdbtnChque);
-		rdbtnChque.setBounds(191, 34, 88, 23);
-		contentPane.add(rdbtnChque);
-		
+		rdbtnCheque = new JRadioButton("Chèque");
+		buttonGroup.add(rdbtnCheque);
+		rdbtnCheque.setBounds(191, 34, 88, 23);
+		contentPane.add(rdbtnCheque);
+
 		JLabel lblTotal = new JLabel("Total : ");
 		lblTotal.setBounds(6, 79, 61, 16);
 		contentPane.add(lblTotal);
@@ -183,6 +187,7 @@ public class EcranTraiterPaiement {
 			montantRecu = Double.parseDouble(textFieldMontantRecu.getText());
 		}
 		catch(Exception e) {
+			montantRecu = 0;
 			e.printStackTrace();
 		}
 		
@@ -192,6 +197,15 @@ public class EcranTraiterPaiement {
 			JOptionPane.showMessageDialog(frmTraiterUnPaiement, "Le montant recu est inferieur au total.");
 		}
 		else {
+			if(rdbtnEspeces.isSelected()) {
+				payerParEspeces();
+			}
+			else if(rdbtnCarte.isSelected()) {
+				payerParCarte();
+			}
+			else if(rdbtnCheque.isSelected()) {
+				payerParCheque();
+			}
 			isPaiementReussi = true;
 			DecimalFormat decimalFormat = new DecimalFormat();
 			decimalFormat.setMaximumFractionDigits(2);
@@ -213,5 +227,17 @@ public class EcranTraiterPaiement {
 			//ecranAfficherListeVentes.rafraichirListeVentes(); // TODO ? Rafraichir la liste des ventes...?
 			frmTraiterUnPaiement.setVisible(false);
 		}
+	}
+	
+	private void payerParEspeces() {
+		// Effectuer le paiement par especes
+	}
+	
+	private void payerParCarte() {
+		// Effectuer le paiement par carte
+	}
+	
+	private void payerParCheque() {
+		// Effectuer le paiement par cheque
 	}
 }
